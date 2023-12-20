@@ -1,24 +1,239 @@
-  /* --------- */
-  /*  Preloader */
-  /* --------- */
-  #preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999999;
-    background-color: #0c0513;
-    background-image: url(./Assets/pre.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+.App {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  font-family: "Dongle", sans-serif;
+}
+button {
+  background-color: #333333;
+  border: none;
+  color: #ffffff;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.centered {
+  text-align: center;
+}
+.sign-in {
+  color: #333333;
+  background: #ffffff;
+  border: 2px solid black;
+  max-width: 400px;
+  margin: 0 auto;
+}
+/* --------- */
+/*  Preloader */
+/* --------- */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  background-color: #0c0513;
+  background-image: url(./Assets/pre.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#preloader-none {
+  opacity: 0;
+}
+
+#no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* --------- */
+/* Navbar Section  */
+/* --------- */
+.navbar {
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+  height: 3.5rem;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #335eea;
+  margin-right: 1.5rem;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: #1358db;
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    padding: 1rem;
   }
-  
-  #preloader-none {
-    opacity: 0;
+
+  .navbar-nav {
+    text-align: center;
+    background-color: #fff;
+    padding: 1rem 0;
   }
-  
-  #no-scroll {
-    overflow: hidden;
-    height: 100vh;
+}
+
+.navbar-toggler {
+  border: 0;
+  padding: 0;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler span {
+  display: block;
+  width: 26px;
+  height: 4px;
+  background-color: #1358db;
+  margin: 5px 0;
+  transition: 0.3s ease-in-out;
+}
+
+/* Animation */
+.toggle-animated span:nth-of-type(1) {
+  transform: rotate(45deg) translate(4.4px, 4.4px);
+  opacity: 0;
+}
+
+.toggle-animated span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.toggle-animated span:nth-of-type(3) {
+  transform: rotate(-45deg) translate(4.4px, -4.4px);
+  opacity: 0;
+}
+
+/* --------- */
+/* Footer */
+/* --------- */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #304146;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footer-copywright {
+  font-size: 0.9rem;
+}
+
+.footer h3 {
+  font-size: 1em;
+  color: white;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-icons li {
+  margin: 0 1rem;
+}
+
+.footer-icons a {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.footer-icons a:hover {
+  color: #a8a8ff;
+}
+
+@media (max-width: 767px) {
+  .footer-copywright,
+  .footer-icons {
+    text-align: center;
   }
+}
+/* --------- */
+/* Home section */
+/* --------- */
+/* Animated wave */
+.wave {
+  animation-name: wave-animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(10deg);
+  }
+  20% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(10deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(7deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Section styling */
+.home-section {
+  background: #f1fbff;
+  padding: 100px 0;
+}
+
+.home-content {
+  color: #475168;
+  text-align: center;
+}
+
+/* Headings */
+.heading {
+  font-size: 2.3em;
+  font-weight: 500;
+}
+
+.brand {
+  color: #02dbcc;
+}
+
+/* Responsiveness */
+@media (max-width: 767px) {
+  .heading {
+    font-size: 1.8em;
+  }
+}

@@ -7,10 +7,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
 import { IoLogIn } from "react-icons/io5";
-import {
-  AiFillStar,
-  AiOutlineHome
-} from "react-icons/ai";
+import { AiFillStar, AiOutlineHome } from "react-icons/ai";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
@@ -56,11 +53,7 @@ function NavBar() {
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link
-                href="/login"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <Nav.Link href="/login" target="_blank" rel="noreferrer">
                 <IoLogIn style={{ marginBottom: "2px" }} /> Sign In
               </Nav.Link>
             </Nav.Item>
