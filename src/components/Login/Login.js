@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup } from "firebase/auth";
@@ -22,11 +22,30 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+function Home() {
+
+  return (
+    <div>
+      <Link to="/blogs">
+        <button>Articles</button>  
+      </Link>
+
+      <Link to="/videos">
+        <button>Videos</button>
+      </Link>
+
+      <Link to="/courses"> 
+        <button>Courses</button>
+      </Link>
+    </div>
+  );
+}
+
 export default function Login() {
   const [user] = useAuthState(auth);
   return (
     <div className="App">
-      <section>{user ? <h1>Hello</h1> : <SignIn />}</section>
+      <section>{user ? <Home /> : <SignIn />}</section>
     </div>
   );
 }

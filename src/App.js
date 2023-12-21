@@ -3,6 +3,7 @@ import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
+import Blog from "./components/Blog/Blog";
 import Footer from "./components/Footer";
 import "./style.css";
 import "./App.css";
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/blogs" element={<Blog />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
