@@ -71,6 +71,7 @@ button {
   font-weight: 500;
   color: #335eea;
   margin-right: 1.5rem;
+  margin-top: 1.5px;
 }
 
 .nav-link.active,
