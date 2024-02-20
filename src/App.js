@@ -5,6 +5,7 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import Blog from "./components/Blog/Blog";
 import Footer from "./components/Footer";
+import Videos from "./components/Videos/Videos";
 import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,6 +15,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import Courses from "./components/Courses/Courses";
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -35,6 +37,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/blogs" element={<Blog />} />
+          <Route path="/videos" element={<Videos />} />
+          <Route path="/courses" element={<Courses />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />

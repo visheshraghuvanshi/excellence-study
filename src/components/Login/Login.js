@@ -16,26 +16,25 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-function Home() {
-
+function Explore() {
   return (
-    <div>
+    <div className="btn-container">
       <Link to="/blogs">
-        <button>Articles</button>  
+        <button className="articles-btn">Articles</button>
       </Link>
 
       <Link to="/videos">
-        <button>Videos</button>
+        <button className="videos-btn">Videos</button>
       </Link>
 
-      <Link to="/courses"> 
-        <button>Courses</button>
+      <Link to="/courses">
+        <button className="courses-btn">Courses</button>
       </Link>
     </div>
   );
@@ -45,7 +44,7 @@ export default function Login() {
   const [user] = useAuthState(auth);
   return (
     <div className="App">
-      <section>{user ? <Home /> : <SignIn />}</section>
+      <section>{user ? <Explore /> : <SignIn />}</section>
     </div>
   );
 }
@@ -58,6 +57,21 @@ function SignIn() {
 
   return (
     <>
+      <h2>Log In</h2>
+
+      <form>
+        <label>
+          Email:
+          <input type="email" />
+        </label>
+
+        <label>
+          Password:
+          <input type="password" />
+        </label>
+
+        <button type="submit">Log In</button>
+      </form>
       <button className="sign-in" onClick={signInWithGoogle}>
         Sign in with Google
       </button>

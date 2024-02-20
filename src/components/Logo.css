@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Quicksand:wght@500;700&display=swap");
+.header-logo {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: "Monoton";
+    text-transform: uppercase;
+    font-weight: 400;
+    word-spacing: 30px;
+    letter-spacing: -5px;
+  }

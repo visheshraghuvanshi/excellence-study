@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import logo from "../Assets/logo.png";
+import Logo from "./Logo";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 import { AiFillStar, AiOutlineHome } from "react-icons/ai";
+import { MdOutlineExplore } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
@@ -43,25 +44,28 @@ function NavBar() {
   return (
     <Navbar expanded={expand} fixed="top" expand="md" className={navColour ? "sticky" : "navbar"}>
       <Container>
-        <Navbar.Brand href="/">
-          <img src={logo} className="img-fluid logo" alt="brand" />
-        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={toggleExpand}>
           <span></span>
           <span></span>
           <span></span>
         </Navbar.Toggle>
+        <Navbar.Brand href="/">
+          <Logo />
+        </Navbar.Brand>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Link as={Link} to="/" onClick={() => setExpand(false)}>
               <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
             </Nav.Link>
             {user ? (
-              <Nav.Link onClick={() => auth.signOut()}>
-                <IoLogOut style={{ marginBottom: "2px" }} /> Logout
+              <><Nav.Link href="/login" rel="noreferrer">
+                <MdOutlineExplore style={{ marginBottom: "2px" }} /> Explore
               </Nav.Link>
+              <Nav.Link onClick={() => auth.signOut()}>
+                  <IoLogOut style={{ marginBottom: "2px" }} /> Logout
+                </Nav.Link></>
             ) : (
-              <Nav.Link href="/login" target="_blank" rel="noreferrer">
+              <Nav.Link href="/login" rel="noreferrer">
                 <IoLogIn style={{ marginBottom: "2px" }} /> Sign In
               </Nav.Link>
             )}

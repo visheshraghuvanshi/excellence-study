@@ -20,7 +20,7 @@ function Home() {
           </Col>
 
           <Col md={5}>
-            <img src={logo} className="logo" alt="Excellence Study" />
+            <img src={logo} className="logo-home" alt="Excellence Study" />
           </Col>
         </Row>
       </Container>
