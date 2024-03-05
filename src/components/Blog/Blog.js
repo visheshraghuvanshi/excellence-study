@@ -21,47 +21,72 @@ export default function Blogs() {
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
   const [posts, setPosts] = useState([]);
+  const [postsToShow, setPostsToShow] = useState(10);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const query = `
-        {
-          user(username: "visheshraghuvanshi") {
-            publication {
-              posts(page: 0) {   
-                title
-                brief
-                coverImage
-                slug
+        query {
+          publication(host: "visheshraghuvanshi.tech") {
+            posts(first: 10) {
+              edges {
+                node {
+                  title
+                  brief
+                  url
+                  coverImage {
+                    url
+                  }
+                  slug
+                }
               }
             }
           }
         }
       `;
 
-      const client = new GraphQLClient("https://api.hashnode.com/");
+      const client = new GraphQLClient("https://gql.hashnode.com/");
       const data = await client.request(query);
-      setPosts(data.user.publication.posts);
+      const postData = data.publication.posts.edges.map((edge) => edge.node);
+      setPosts(postData);
     };
 
     fetchPosts();
   }, []);
-  
+
   if (!user) {
     return <Navigate to="/login" />;
   }
 
+  const loadMorePosts = () => {
+    setPostsToShow((prevValue) => prevValue + 10);
+  };
+
   return (
-    <div className="blog-list">
-      {posts.map((post) => (
-        <div key={post.title} className="post">
-          <a href={"https://visheshraghuvanshi.tech/" + post.slug}>
-            <h3>{post.title}</h3>
-            <img src={post.coverImage} alt="" />
-          </a>
-          <p>{post.brief}</p>
-        </div>
-      ))}
+    <div className="blog-container">
+      <h1 className="blog-heading">Articles</h1>
+      <div className="blog-list">
+        {posts.slice(0, postsToShow).map((post) => (
+          <div key={post.url} className="post">
+            <a href={`https://visheshraghuvanshi.tech/${post.slug}`}>
+              <h3 className="post-title">{post.title}</h3>
+              {post.coverImage && (
+                <img
+                  src={post.coverImage.url}
+                  alt={post.title}
+                  className="post-image"
+                />
+              )}
+            </a>
+            <p className="post-brief">{post.brief}</p>
+          </div>
+        ))}
+      </div>
+      {postsToShow < posts.length && (
+        <button className="load-more-btn" onClick={loadMorePosts}>
+          Load More
+        </button>
+      )}
     </div>
   );
 }
