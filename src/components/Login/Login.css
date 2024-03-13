@@ -1,0 +1,116 @@
+/* Unique style for each button */
+
+.features-section {
+  margin-bottom: 2rem;
+}
+
+.features-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  text-align: center;
+  max-width: 300px;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .feature-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* login-container.css */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+/* sign-in-form.css */
+.sign-in-form {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Adjust width as needed */
+}
+
+.sign-in-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sign-in-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.sign-in-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.sign-in-form button {
+  background-color: #ff6347; /* Green */
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.sign-in-form button:hover {
+  opacity: 0.8;
+}
+
+.google-sign-in {
+  background-color: #dd4b39; /* Google red */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px 20px;
+  margin-top: 15px;
+}
+
+.google-sign-in:hover {
+  opacity: 0.8;
+}
