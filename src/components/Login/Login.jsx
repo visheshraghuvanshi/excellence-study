@@ -106,24 +106,39 @@ function SignIn() {
         signInWithPopup(auth, provider); // Assuming you have signInWithPopup function
     };
 
+
     return (
-        <div className="sign-in-form login-container">
-            <h2>Log In</h2>
-            <form>
-                <label htmlFor="email">
-                    Email:
-                    <input type="email" id="email" required/>
-                </label>
-                <label htmlFor="password">
-                    Password:
-                    <input type="password" id="password" required/>
-                </label>
-                <button type="submit">Log In</button>
-            </form>
-            <button className="google-sign-in"
-                onClick={signInWithGoogle}>
-                Sign in with Google
-            </button>
-        </div>
+        <div className={'mainContainer'}>
+      <div className={'titleContainer'}>
+        <div>Login</div>
+      </div>
+      <br />
+      <div className={'inputContainer'}>
+        <input
+          placeholder="Enter your email here"
+          className={'inputBox'}
+        />
+      </div>
+      <br />
+      <div className={'inputContainer'}>
+        <input
+          placeholder="Enter your password here"
+          className={'inputBox'}
+          type="password"
+        />
+      </div>
+      <br />
+      <div className={'inputContainer'}>
+        <input className={'inputButton'} type="button" value={'Log in'} />
+      </div>
+      <div className={'inputContainer'}>
+        <input className={'inputButton'} type="button" onClick={signInWithGoogle} value={'Sign in with Google'} />
+      </div>
+    </div>
     );
 }
+
+{/* <button className="google-sign-in"
+                onClick={signInWithGoogle}>
+                Sign in with Google
+            </button> */}

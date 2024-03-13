@@ -48,69 +48,78 @@
   }
 }
 
-/* login-container.css */
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffffff;
-}
-
 /* sign-in-form.css */
-.sign-in-form {
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 30px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 300px; /* Adjust width as needed */
+.mainContainer {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.sign-in-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 64px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
 }
 
-.sign-in-form label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
+.resultContainer,
+.historyItem {
+  flex-direction: row;
+  display: flex;
+  width: 400px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.sign-in-form input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-bottom: 15px;
+.historyContainer {
+  flex-direction: column;
+  display: flex;
+  height: 200px;
+  align-items: center;
+  flex-grow: 5;
+  justify-content: flex-start;
 }
 
-.sign-in-form button {
-  background-color: #ff6347; /* Green */
-  color: white;
-  padding: 15px 20px;
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 260px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.inputContainer > .errorLabel {
+  color: red;
+  font-size: 12px;
+}
+
+.inputBox {
+  height: 48px;
+  width: 400px;
+  font-size: large;
+  border-radius: 8px;
+  border: 1px solid grey;
+  padding-left: 8px;
+}
+
+input[type='button'] {
   border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.sign-in-form button:hover {
-  opacity: 0.8;
-}
-
-.google-sign-in {
-  background-color: #dd4b39; /* Google red */
+  background: rgb(243, 105, 70);
   color: white;
-  border: none;
+  padding: 12px 24px;
+  margin: 8px;
+  font-size: 24px;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
-  width: 100%;
-  padding: 10px 20px;
-  margin-top: 15px;
-}
-
-.google-sign-in:hover {
-  opacity: 0.8;
 }
