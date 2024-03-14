@@ -3,8 +3,7 @@ import { FaGoogle } from 'react-icons/fa';
 import './Login.css';
 import { Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import "firebase/compat/analytics";
@@ -14,19 +13,7 @@ import Video from "../../assets/video.png";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { useAuthState } from "react-firebase-hooks/auth";
-
-const firebaseConfig = {
-    apiKey: import.meta.env.VITE_APP_API_KEY,
-    authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
-    projectId: import.meta.env.VITE_APP_PROJECT_ID,
-    storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
-    appId: import.meta.env.VITE_APP_APP_ID,
-    measurementId: import.meta.env.VITE_APP_MEASUREMENT_ID
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+import { auth } from '../FirebaseAuth'
 
 function Explore() {
     return (
