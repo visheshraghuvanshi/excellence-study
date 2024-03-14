@@ -1,18 +1,19 @@
-import {Link} from "react-router-dom";
+import { useState } from 'react';
+import { FaGoogle } from 'react-icons/fa';
+import './Login.css';
+import { Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
-import {initializeApp} from "firebase/app";
-import {getAuth, signInWithPopup} from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithPopup } from "firebase/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import "firebase/compat/analytics";
-import "./Login.css";
 import Course from "../../assets/courses.png";
 import Article from "../../assets/article.png";
 import Video from "../../assets/video.png";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-
-import {useAuthState} from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_APP_API_KEY,
@@ -30,72 +31,65 @@ const auth = getAuth(app);
 function Explore() {
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <section className="features-section login-container">
                 <div className="feature-cards">
-                    <Link to="/articles"
-                        style={
-                            {
-                                color: "inherit",
-                                textDecoration: "inherit"
-                            }
-                    }>
+                    <Link
+                        to="/articles"
+                        style={{
+                            color: "inherit",
+                            textDecoration: "inherit"
+                        }}
+                    >
                         <div className="feature-card">
-                            <img src={Article}
-                                alt="Article Icon"/>
+                            <img src={Article} alt="Article Icon" />
                             <h3>Articles</h3>
                             <p>
-                                Access a vast library of educational articles written by
-                                                experts.
+                                Access a vast library of educational articles written by experts.
                             </p>
                         </div>
                     </Link>
-                    <Link to="/courses"
-                        style={
-                            {
-                                color: "inherit",
-                                textDecoration: "inherit"
-                            }
-                    }>
+                    <Link
+                        to="/courses"
+                        style={{
+                            color: "inherit",
+                            textDecoration: "inherit"
+                        }}
+                    >
                         <div className="feature-card">
-                            <img src={Course}
-                                alt="Course Icon"/>
+                            <img src={Course} alt="Course Icon" />
                             <h3>Courses</h3>
                             <p>
-                                Enroll in our comprehensive online courses and learn at your own
-                                                pace.
+                                Enroll in our comprehensive online courses and learn at your own pace.
                             </p>
                         </div>
                     </Link>
-                    <Link to="/videos"
-                        style={
-                            {
-                                color: "inherit",
-                                textDecoration: "inherit"
-                            }
-                    }>
+                    <Link
+                        to="/videos"
+                        style={{
+                            color: "inherit",
+                            textDecoration: "inherit"
+                        }}
+                    >
                         <div className="feature-card">
-                            <img src={Video}
-                                alt="Video Icon"/>
+                            <img src={Video} alt="Video Icon" />
                             <h3>Videos</h3>
                             <p>Explore our collection of engaging educational videos.</p>
                         </div>
                     </Link>
                 </div>
             </section>
-            <Footer/>
+            <Footer />
         </>
     );
 }
 
-export default function Login() {
+function Login() {
     const [user] = useAuthState(auth);
 
     return (
         <div>
-            <section>{
-                user ? <Explore/>: <SignIn/>
-            }</section>
+            <section>{user ? <Explore /> : <SignIn />}</section>
         </div>
     );
 }
@@ -103,42 +97,68 @@ export default function Login() {
 function SignIn() {
     const signInWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
-        signInWithPopup(auth, provider); // Assuming you have signInWithPopup function
+        signInWithPopup(auth, provider);
     };
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle login logic here
+        console.log('Email:', email);
+        console.log('Password:', password);
+    };
 
     return (
-        <div className={'mainContainer'}>
-      <div className={'titleContainer'}>
-        <div>Login</div>
-      </div>
-      <br />
-      <div className={'inputContainer'}>
-        <input
-          placeholder="Enter your email here"
-          className={'inputBox'}
-        />
-      </div>
-      <br />
-      <div className={'inputContainer'}>
-        <input
-          placeholder="Enter your password here"
-          className={'inputBox'}
-          type="password"
-        />
-      </div>
-      <br />
-      <div className={'inputContainer'}>
-        <input className={'inputButton'} type="button" value={'Log in'} />
-      </div>
-      <div className={'inputContainer'}>
-        <input className={'inputButton'} type="button" onClick={signInWithGoogle} value={'Sign in with Google'} />
-      </div>
-    </div>
+        <div className="login-container">
+            <div className="login-card">
+                <h2 className="login-title">Login</h2>
+                <form onSubmit={handleSubmit} className="login-form">
+                    <div className="form-group">
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={handleEmailChange}
+                            required
+                            className="form-input"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={handlePasswordChange}
+                            required
+                            className="form-input"
+                        />
+                    </div>
+                    <button type="submit" className="login-button">
+                        Login
+                    </button>
+                </form>
+                <div className="separator">or</div>
+                <center><button
+                    type="button"
+                    onClick={signInWithGoogle}
+                    className="google-sign-in"
+                >
+                    <FaGoogle />
+                    Sign in with Google
+                </button></center>
+            </div>
+        </div>
     );
 }
 
-{/* <button className="google-sign-in"
-                onClick={signInWithGoogle}>
-                Sign in with Google
-            </button> */}
+export default Login;
