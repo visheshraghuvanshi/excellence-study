@@ -35,6 +35,7 @@ body {
 
 .nav-elements ul li:not(:last-child) {
   margin-right: 60px;
+  padding: 0.8rem;
 }
 
 .nav-elements ul a {
@@ -113,4 +114,20 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
+}
+
+/* Login Logout Buttons */
+.login-logout-button{
+  background-color: #ff6347;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-logout-button:hover {
+  background-color: #e55639;
 }

@@ -1,6 +1,8 @@
 import {useState} from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import './Navbar.css';
+import {auth} from '../FirebaseAuth';
+import {useAuthState} from "react-firebase-hooks/auth";
 
 const Navbar = () => {
     const [showNavbar, setShowNavbar] = useState(false);
@@ -8,6 +10,7 @@ const Navbar = () => {
     const handleShowNavbar = () => {
         setShowNavbar(!showNavbar);
     };
+    const [user] = useAuthState(auth);
 
     return (
         <nav className="navbar">
@@ -45,6 +48,16 @@ const Navbar = () => {
                         <li>
                             <NavLink to="/contact">Contact</NavLink>
                         </li>
+                        <div className="login-logout-buttons">
+                            {
+                            user ? (
+                                <button className="login-logout-button" onClick={() => auth.signOut()}>Logout</button>
+                            ) : (
+                                <Link to="/login">
+                                    <button className="login-logout-button">Sign In</button>
+                                </Link>
+                            )
+                        } </div>
                     </ul>
                 </div>
             </div>
