@@ -127,3 +127,8 @@
 .feature-card p {
   color: #666666;
 }
+
+.home-redirect {
+  text-align: center;
+  margin: 20px 0;
+}
