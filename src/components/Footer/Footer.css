@@ -22,7 +22,7 @@
 }
 
 .nav-item {
-  margin: 0 1rem; /* Increase horizontal spacing between nav items */
+  margin: 0 1rem;
 }
 
 .nav-link {
@@ -89,15 +89,17 @@
   }
 
   .nav-item {
-    margin: 0.5rem 0; /* Adjust vertical spacing for nav items on small screens */
+    margin: 0.5rem 0;
   }
 
   .social-links {
     flex-wrap: wrap;
     justify-content: center;
+    order: -1;
   }
 
   .social-link {
     margin: 0.25rem;
   }
+
 }
