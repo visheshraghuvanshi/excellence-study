@@ -1,0 +1,63 @@
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .about-heading {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .about-content {
+    line-height: 1.6;
+  }
+  
+  .team-heading {
+    margin-top: 2rem;
+  }
+  
+  .team-members {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .team-member {
+    flex-basis: 48%;
+    margin-bottom: 2rem;
+  }
+  
+  .team-member-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  .team-member-name {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .team-member-role {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .team-member-links a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 1rem;
+  }
+  
+  .team-member-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .mission-heading {
+    margin-top: 3rem;
+  }
+  
+  .mission-statement {
+    font-style: italic;
+  }

@@ -4,6 +4,7 @@ import Login from "./components/Login/Login";
 import {BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
 import Videos from "./components/Videos/Videos";
 import Courses from "./components/Courses/Courses";
+import About from "./components/About/About";
 
 function App() {
 
@@ -21,6 +22,8 @@ function App() {
                         element={<Videos/>}/>
                     <Route path="/courses"
                         element={<Courses/>}/>
+                    <Route path="/about"
+                        element={<About/>}/>
                     <Route path="*"
                         element={
                             <Navigate
