@@ -135,6 +135,7 @@
 
 @media (max-width: 768px) {
   .feature-cards {
+    padding: 0px 0 150px;
     margin-top: auto;
     flex-direction: column;
     align-items: center;
