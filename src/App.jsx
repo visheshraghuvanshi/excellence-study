@@ -6,6 +6,7 @@ import Videos from "./components/Videos/Videos";
 import Courses from "./components/Courses/Courses";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
+import Explore from "./components/Explore/Explore";
 
 function App() {
 
@@ -23,6 +24,8 @@ function App() {
                         element={<Videos/>}/>
                     <Route path="/courses"
                         element={<Courses/>}/>
+                    <Route path="/explore"
+                        element={<Explore/>}/>
                     <Route path="/about"
                         element={<About/>}/>
                     <Route path="/contact"
