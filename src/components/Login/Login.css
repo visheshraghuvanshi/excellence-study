@@ -132,3 +132,10 @@
   text-align: center;
   margin: 20px 0;
 }
+
+@media (max-width: 768px) {
+  .feature-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
