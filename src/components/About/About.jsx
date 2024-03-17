@@ -1,4 +1,5 @@
 import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 import TeamMember1 from '../../assets/team-member-1.png'
 import TeamMember2 from '../../assets/team-member-2.png'
 import './About.css';
@@ -35,8 +36,8 @@ const About = () => {
               Ankit is a Computer Science Engineering student at Sushila Devi Bansal College of Engineering. His dedication to education and his deep understanding of learning methodologies have been instrumental in curating Excellence Study's comprehensive and engaging educational content. Ankit's extensive experience in the field of education and his commitment to student success have shaped the platform's innovative approach to learning.
             </p>
             <p className="team-member-links">
-              <a href="https://github.com/ankitsingh" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/in/ankitsingh/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://github.com/ankitoid" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/ankits25/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </p>
           </div>
         </div>
@@ -46,6 +47,7 @@ const About = () => {
         </p>
       </div>
     </div>
+    <Footer />
     </>
   );
 };
