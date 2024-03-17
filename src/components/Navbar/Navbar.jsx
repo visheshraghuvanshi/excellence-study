@@ -48,6 +48,7 @@ const Navbar = () => {
                         <li>
                             <NavLink to="/contact">Contact</NavLink>
                         </li>
+                        <li>
                         <div className="login-logout-buttons">
                             {
                             user ? (
@@ -58,6 +59,7 @@ const Navbar = () => {
                                 </Link>
                             )
                         } </div>
+                        </li>
                     </ul>
                 </div>
             </div>
