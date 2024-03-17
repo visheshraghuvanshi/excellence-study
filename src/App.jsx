@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom
 import Videos from "./components/Videos/Videos";
 import Courses from "./components/Courses/Courses";
 import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
 
 function App() {
 
@@ -24,6 +25,8 @@ function App() {
                         element={<Courses/>}/>
                     <Route path="/about"
                         element={<About/>}/>
+                    <Route path="/contact"
+                        element={<Contact/>}/>
                     <Route path="*"
                         element={
                             <Navigate
