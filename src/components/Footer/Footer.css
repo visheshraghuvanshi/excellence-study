@@ -1,7 +1,11 @@
-/* Footer Styles */
+/* General Styles */
 .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   background-color: #fff;
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
 
 .container {
@@ -14,16 +18,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .nav-item {
-  margin: 0.5rem;
+  margin: 0 1rem; /* Increase horizontal spacing between nav items */
 }
 
 .nav-link {
   color: #4a5568;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-weight: 500; /* Make nav links a bit bolder */
 }
 
 .nav-link:hover {
@@ -33,6 +39,7 @@
 .social-links {
   display: flex;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .social-link {
@@ -72,4 +79,25 @@
   text-align: center;
   color: #4a5568;
   font-size: 0.875rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .footer-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-item {
+    margin: 0.5rem 0; /* Adjust vertical spacing for nav items on small screens */
+  }
+
+  .social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .social-link {
+    margin: 0.25rem;
+  }
 }
