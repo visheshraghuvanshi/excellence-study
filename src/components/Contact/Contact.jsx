@@ -26,26 +26,31 @@ const Contact = () => {
       </div>
       <h2>Send us a message</h2>
       <form onSubmit={handleSubmit}>
+      <div className="form-group">
         <input
           type="text"
           placeholder="Your Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          className="form-input"
         />
         <input
           type="email"
           placeholder="Your Email"
           value={email}
+          className="form-input"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <textarea
           placeholder="Your Message"
           value={message}
+          className="form-input"
           onChange={(e) => setMessage(e.target.value)}
           required
         ></textarea>
+        </div>
         <button type="submit">Send</button>
       </form>
     </div>
