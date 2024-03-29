@@ -32,7 +32,7 @@ function Courses() {
     return (
         <>
         <Navbar />
-        <div className="App">
+        <div className="Courses">
             <h1>Our Courses</h1>
             <div className="course-grid">
                 {
