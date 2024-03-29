@@ -1,7 +1,7 @@
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
-import TeamMember1 from '../../assets/team-member-1.png'
-import TeamMember2 from '../../assets/team-member-2.png'
+import TeamMember1 from '../../assets/team-member-1.svg'
+import TeamMember2 from '../../assets/team-member-2.svg'
 import './About.css';
 
 const About = () => {
