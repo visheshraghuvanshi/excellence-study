@@ -4,7 +4,10 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import WebDevImage from "../../assets/intro-to-web-dev.png";
 import ReactFundamentalsImage from "../../assets/react-fundamentals.png";
-import NodeAndExpressImage from "../../assets/node-js-and-express.png"
+import NodeAndExpressImage from "../../assets/node-js-and-express.png";
+import {useAuthState} from "react-firebase-hooks/auth";
+import { auth } from '../FirebaseAuth';
+import {Navigate} from "react-router-dom";
 
 const courses = [
     {
@@ -29,6 +32,11 @@ const courses = [
 ];
 
 function Courses() {
+    const [user] = useAuthState(auth);
+
+    if (!user) {
+        return <Navigate to="/login"/>;
+    }
     return (
         <>
         <Navbar />
