@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {FaGoogle} from 'react-icons/fa';
 import './Login.css';
 import {Link, useNavigate} from "react-router-dom";
@@ -40,7 +40,7 @@ function Login() {
         <> {
             user ? navigate('/explore') : (
                 <> {
-                    showSignUp && <SignUp/>
+                    showSignUp && <SignUp onClose={() => setShowSignUp(false)} />
                 }
                     <SignIn toggleSignUp={toggleSignUp}
                         handleSubmit={handleSubmit}
@@ -113,6 +113,10 @@ function SignIn({
                 <div className="signup-link"
                     onClick={toggleSignUp}>
                     Don't have an account? Sign Up
+                </div>
+                <div className="signup-link"
+                    onClick={toggleSignUp}>
+                    Forgot Password
                 </div>
                 <div className="home-redirect">
                     <Link to="/"
