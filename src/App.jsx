@@ -7,6 +7,7 @@ import Courses from "./components/Courses/Courses";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Explore from "./components/Explore/Explore";
+import Reset from "./components/Login/Reset"
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
                         element={<About/>}/>
                     <Route path="/contact"
                         element={<Contact/>}/>
+                    <Route path="/reset"
+                        element={<Reset/>}/>
                     <Route path="*"
                         element={
                             <Navigate

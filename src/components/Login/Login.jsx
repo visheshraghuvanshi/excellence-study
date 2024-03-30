@@ -115,7 +115,7 @@ function SignIn({
                     Don't have an account? Sign Up
                 </div>
                 <div className="signup-link"
-                    onClick={toggleSignUp}>
+                    onClick={handleReset}>
                     Forgot Password
                 </div>
                 <div className="home-redirect">
