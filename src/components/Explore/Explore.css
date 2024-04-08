@@ -46,8 +46,11 @@
   @media (max-width: 768px) {
     .feature-cards {
       padding: 0px 0 150px;
-      margin-top: auto;
+      margin-top: 500px;
       flex-direction: column;
       align-items: center;
+    }
+    .footer {
+      margin-top: 100px;
     }
   }

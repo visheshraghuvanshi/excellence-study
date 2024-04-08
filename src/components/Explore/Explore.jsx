@@ -60,7 +60,9 @@ function Explore() {
                     </Link>
                 </div>
             </section>
+            <div className="footer">
             <Footer/>
+            </div>
         </>
     );
 }
