@@ -15,8 +15,9 @@ function Login() {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
     const [showSignUp, setShowSignUp] = useState(false);
-    const [email, setEmail] = useState(''); // Added state for email
-    const [password, setPassword] = useState(''); // Added state for password
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [authError, setAuthError] = useState('');
 
     const toggleSignUp = () => {
         setShowSignUp(!showSignUp);
@@ -24,12 +25,20 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password).then((data) => {
-            console.log(data, "authData");
-            navigate("/home");
-        }).catch((err) => {
-            alert(err.code);
-        });
+        signInWithEmailAndPassword(auth, email, password)
+            .then((data) => {
+                console.log(data, "authData");
+                navigate("/home");
+            })
+            .catch((err) => {
+                if (err.code === 'auth/wrong-password') {
+                    setAuthError('Incorrect password. Please try again.');
+                } else if (err.code === 'auth/user-not-found') {
+                    setAuthError('User not found. Please check your email and try again.');
+                } else {
+                    setAuthError(err.message);
+                }
+            });
     };
 
     const handleReset = () => {
@@ -37,21 +46,23 @@ function Login() {
     }
 
     return (
-        <> {
-            user ? navigate('/explore') : (
-                <> {
-                    showSignUp && <SignUp onClose={() => setShowSignUp(false)} />
-                }
-                    <SignIn toggleSignUp={toggleSignUp}
+        <>
+            {user ? navigate('/explore') : (
+                <>
+                    {showSignUp && <SignUp onClose={() => setShowSignUp(false)} />}
+                    <SignIn
+                        toggleSignUp={toggleSignUp}
                         handleSubmit={handleSubmit}
                         handleReset={handleReset}
                         email={email}
                         setEmail={setEmail}
                         password={password}
-                        setPassword={setPassword}/>
+                        setPassword={setPassword}
+                        authError={authError}
+                    />
                 </>
-            )
-        } </>
+            )}
+        </>
     );
 }
 
@@ -62,11 +73,15 @@ function SignIn({
     email,
     setEmail,
     password,
-    setPassword
+    setPassword,
+    authError
 }) {
     const signInWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
-        signInWithPopup(auth, provider);
+        signInWithPopup(auth, provider)
+            .catch((err) => {
+                setAuthError(err.message);
+            });
     };
 
     const handleEmailChange = (e) => {
@@ -81,21 +96,29 @@ function SignIn({
         <div className="login-container">
             <div className="login-card">
                 <h2 className="login-title">Login</h2>
-                <form onSubmit={handleSubmit}
-                    className="login-form">
+                {authError && <div className="auth-error">{authError}</div>}
+                <form onSubmit={handleSubmit} className="login-form">
                     <div className="form-group">
-                        <input name="email" type="email" placeholder="Email"
+                        <input
+                            name="email"
+                            type="email"
+                            placeholder="Email"
                             value={email}
                             onChange={handleEmailChange}
                             required
-                            className="form-input"/>
+                            className="form-input"
+                        />
                     </div>
                     <div className="form-group">
-                        <input name="password" type="password" placeholder="Password"
+                        <input
+                            name="password"
+                            type="password"
+                            placeholder="Password"
                             value={password}
                             onChange={handlePasswordChange}
                             required
-                            className="form-input"/>
+                            className="form-input"
+                        />
                     </div>
                     <button type="submit" className="login-button">
                         Login
@@ -103,29 +126,29 @@ function SignIn({
                 </form>
                 <div className="separator">or</div>
                 <center>
-                    <button type="button"
+                    <button
+                        type="button"
                         onClick={signInWithGoogle}
-                        className="google-sign-in">
-                        <FaGoogle/>
+                        className="google-sign-in"
+                    >
+                        <FaGoogle />
                         Sign in with Google
                     </button>
                 </center>
-                <div className="signup-link"
-                    onClick={toggleSignUp}>
+                <div className="signup-link" onClick={toggleSignUp}>
                     Don't have an account? Sign Up
                 </div>
-                <div className="signup-link"
-                    onClick={handleReset}>
+                <div className="signup-link" onClick={handleReset}>
                     Forgot Password
                 </div>
                 <div className="home-redirect">
-                    <Link to="/"
-                        style={
-                            {
-                                color: "inherit",
-                                textDecoration: "inherit"
-                            }
-                    }>
+                    <Link
+                        to="/"
+                        style={{
+                            color: "inherit",
+                            textDecoration: "inherit"
+                        }}
+                    >
                         Home
                     </Link>
                 </div>

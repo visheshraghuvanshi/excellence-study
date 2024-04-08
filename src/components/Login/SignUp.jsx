@@ -5,6 +5,7 @@ import {createUserWithEmailAndPassword} from 'firebase/auth';
 const SignUp = ({onClose}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [authError, setAuthError] = useState('');
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -18,12 +19,15 @@ const SignUp = ({onClose}) => {
         e.preventDefault();
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            // User created successfully, you can navigate or show a success message
             console.log('User created successfully');
-            onClose(); // Close the popup after successful sign up
+            onClose();
         } catch (error) {
-            console.error('Error creating user:', error);
-            // Handle error, e.g., show an error message
+            if (error.code === 'auth/email-already-in-use') {
+                setAuthError('The email address is already in use by another account.');
+            } else {
+                console.error('Error creating user:', error);
+                setAuthError(error.message);
+            }
         }
     };
 
@@ -37,6 +41,10 @@ const SignUp = ({onClose}) => {
                         &times;
                     </button>
                 </div>
+                {
+                authError && <div className="auth-error">
+                    {authError}</div>
+            }
                 <form onSubmit={handleSubmit}
                     className="signup-form">
                     <div className="form-group">
